@@ -1,0 +1,18 @@
+{
+    "contents" : "#install.packages(\"xlsx\")\n#install.packages(\"rJava\")\n#install.packages(\"xlsxjars\")\n#install.packages(\"XML\")\n#install.packages(\"data.table\")\n\nlibrary(\"xlsxjars\")\nlibrary(\"rJava\")\nlibrary(\"xlsx\")\nlibrary(\"XML\")\nlibrary(\"data.table\")\n\n#set workdirectory\nsetwd(\"C:/Users/Vincent/Documents/Bookie Model R/Data\")\n\n#Create (if needed) subdirectories\n#England\nif (!file.exists(\"E0\")){ dir.create(file.path(getwd(), \"E0\")) }\nif (!file.exists(\"E1\")){ dir.create(file.path(getwd(), \"E1\")) }\nif (!file.exists(\"E2\")){ dir.create(file.path(getwd(), \"E2\")) }\nif (!file.exists(\"E3\")){ dir.create(file.path(getwd(), \"E3\")) }\nif (!file.exists(\"EC\")){ dir.create(file.path(getwd(), \"EC\")) }\n#Scotland\nif (!file.exists(\"SC0\")){ dir.create(file.path(getwd(), \"SC0\")) }\nif (!file.exists(\"SC1\")){ dir.create(file.path(getwd(), \"SC1\")) }\nif (!file.exists(\"SC2\")){ dir.create(file.path(getwd(), \"SC2\")) }\nif (!file.exists(\"SC3\")){ dir.create(file.path(getwd(), \"SC3\")) }\n#Germany\nif (!file.exists(\"D1\")){ dir.create(file.path(getwd(), \"D1\")) }\nif (!file.exists(\"D2\")){ dir.create(file.path(getwd(), \"D2\")) }\n#Italy\nif (!file.exists(\"I1\")){ dir.create(file.path(getwd(), \"I1\")) }\nif (!file.exists(\"I2\")){ dir.create(file.path(getwd(), \"I2\")) }\n#Spain\nif (!file.exists(\"SP1\")){ dir.create(file.path(getwd(), \"SP1\")) }\nif (!file.exists(\"SP2\")){ dir.create(file.path(getwd(), \"SP2\")) }\n#France\nif (!file.exists(\"F1\")){ dir.create(file.path(getwd(), \"F1\")) }\nif (!file.exists(\"F2\")){ dir.create(file.path(getwd(), \"F2\")) }\n#Netherlands\nif (!file.exists(\"N1\")){ dir.create(file.path(getwd(), \"N1\")) }\n#Belgium\nif (!file.exists(\"B1\")){ dir.create(file.path(getwd(), \"B1\")) }\n#Portugal\nif (!file.exists(\"P1\")){ dir.create(file.path(getwd(), \"P1\")) }\n#Turkey\nif (!file.exists(\"T1\")){ dir.create(file.path(getwd(), \"T1\")) }\n#Greece\nif (!file.exists(\"G1\")){ dir.create(file.path(getwd(), \"G1\")) }\n\nseasons <- c(\"0506\",\"0607\",\"0809\",\"0910\", \"1011\", \"1112\", \"1213\", \"1314\", \"1415\", \"1516\")\ncompetitions <- c(\"E0\",\"E1\",\"E2\",\"E3\",\"EC\",\"SC0\",\"SC1\",\"SC2\",\"SC3\"\n                  ,\"D1\",\"D2\",\"I1\",\"I2\",\"SP1\",\"SP2\",\"F1\",\"F2\",\"N1\"\n                  ,\"B1\",\"P1\",\"T1\",\"G1\")\n\nURLfold <- \"http://www.football-data.co.uk/mmz4281/\"\n\nfor (i in 1:length(seasons)) \n{\n  for (j in 1:length(competitions)) \n    {\n    FileName <- paste(URLfold, seasons[i], \"/\", competitions[j], \".csv\", sep='')\n    des_file <- paste(\"./\", competitions[j], \"/\", competitions[j], \"_\", seasons[i], \".csv\", sep='')\n    download.file(FileName, destfile = des_file)\n    }\n}\n\n\n\n\n\n\n",
+    "created" : 1444472139410.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3885102239",
+    "id" : "2747DC92",
+    "lastKnownWriteTime" : 1444475583,
+    "path" : "~/Bookie Model R/Programs/DownloadData.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

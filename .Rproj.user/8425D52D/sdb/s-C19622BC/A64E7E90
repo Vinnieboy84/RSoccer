@@ -1,0 +1,18 @@
+{
+    "contents" : "# Readin data reads downloaded data from folders\n# As per 2-10-2015, only reads in NL\n\n#install.packages(\"gtools\") \nlibrary(\"gtools\")\n#package for smartbind\n\nsetwd(\"C:/Users/Vincent/Documents/Bookie Model R/Data R\")\nfolder <- \"../Data/N1/\"      # path to folder that holds multiple .csv files\nfile_list <- list.files(path=folder, pattern=\"*.csv\") # create list of all .csv files in folder\nname_list <- substr(file_list,(regexpr(\"_\",file_list,\"match.length\"))[1]+1,nchar(file_list))\n\n#rm(list=ls())\n#Remove all data\n\n# Read in all data sets\nfor (i in 1:length(file_list))\n{\n  assign(name_list[i], \n         read.csv(paste(folder, file_list[i], sep=''))\n  )}\n\n#Remove N/A and add Season indicator\n\nfor (i in 1:length(name_list))\n{\n  set_complete <- complete.cases(get(name_list[i]))\n  set_fixed <- get(name_list[i])\n  set_fixed <- set_fixed[set_complete,]\n  \n  if (sum(complete.cases(set_fixed))>0)\n  {\n    set_fixed$Season = i\n    if (!exists(\"total\")){\n      total <- set_fixed\n    }\n    \n    # if the merged dataset does exist, append to it\n    if (exists(\"total\")){\n      total<-smartbind(total, set_fixed) \n    }\n  }\n  \n}",
+    "created" : 1443980063846.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1040871600",
+    "id" : "A64E7E90",
+    "lastKnownWriteTime" : 1444676547,
+    "path" : "~/Bookie Model R/RSoccer/ReadinData.R",
+    "project_path" : "ReadinData.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

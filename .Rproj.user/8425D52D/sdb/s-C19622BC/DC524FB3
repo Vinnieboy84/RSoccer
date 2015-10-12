@@ -1,0 +1,18 @@
+{
+    "contents" : "#Create Model data, the main function to create a set of data ready for modelling\n\n#rm(list=ls())\n\ntype_set <- \"short\"\n\nif (type_set == \"short\") {\n  req_data <- data.frame(total$HomeTeam, total$AwayTeam, total$FTHG, total$FTAG, \n                         total$FTR, total$VCH, total$VCD, total$VCA, total$Season)\n  colnames(req_data) <- c(\"Home\", \"Away\", \"HomeG\", \"AwayG\", \"Result\", \"OddsH\", \"OddsA\", \"OddsD\", \"Season\")\n}\n\nif (type_set == \"long\") {\n  req_data <- data.frame(total$HomeTeam, total$AwayTeam, total$FTHG, total$FTAG, \n                         total$FTR, total$VCH, total$VCD, total$VCA, total$Season)\n  colnames(req_data) <- c(\"Home\", \"Away\", \"HomeG\", \"AwayG\", \"Result\", \"OddsH\", \"OddsA\", \"OddsD\", \"Season\")\n}\n\n#pick only the last six (and current) seasons\n\nSeason_app = (max(req_data$Season)-6):max(req_data$Season)\nreq_data <- req_data[req_data$Season %in% Season_app, ]\n\n#function to find last X\n\nf.findlastx <- function(dataset, x) {\n  z1 <- 2*x + y\n  z2 <- x + 2*y\n  z3 <- 2*x + 2*y\n  z4 <- x/y\n}",
+    "created" : 1443980114670.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1996621342",
+    "id" : "DC524FB3",
+    "lastKnownWriteTime" : 1443980139,
+    "path" : "~/Bookie Model R/RSoccer/CreateModelData.R",
+    "project_path" : "CreateModelData.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
