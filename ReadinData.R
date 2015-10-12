@@ -15,7 +15,7 @@ name_list <- substr(file_list,(regexpr("_",file_list,"match.length"))[1]+1,nchar
 
 # Read in all data sets
 for (i in 1:length(file_list))
-{
+  {
   assign(name_list[i], 
          read.csv(paste(folder, file_list[i], sep=''))
   )}
